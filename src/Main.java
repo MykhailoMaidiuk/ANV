@@ -11,5 +11,13 @@ public class Main {
         String msg = customDrink + " in " + CafeConfig.getInstance().getCafeName();
         System.out.println(customDrink + " in " + CafeConfig.getInstance().getCafeName());
         order.notifiedAll(msg);
+
+        Checkout checkout = new Checkout(new CreditCardPayment());
+
+        System.out.println(checkout.processPayment(150, 4));
+
+        checkout.setStrategy(new CashPayment());
+
+        System.out.println(checkout.processPayment(100, 2));
     }
 }
